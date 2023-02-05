@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dio/dio.dart';
@@ -7,7 +6,7 @@ import 'package:intl/intl.dart';
 
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: myApp(),
   ));
@@ -68,12 +67,12 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                         child: Center(
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.location_on_rounded,
                                 size: 50,
                                 color: Colors.black54,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 1,
                               ),
                               Expanded(
@@ -87,7 +86,7 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
 
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               IconButton(
@@ -96,7 +95,7 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                                       CurrentWeatherFuture = sendRequestCurrentWeather(textEditingController.text);
                                     });
                                   },
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.search_sharp,
                                     size: 35,
 
@@ -108,16 +107,16 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                       Column(
                         children: [
                           Text(cityDataModel.City.toString(),style: GoogleFonts.ubuntu(fontSize: 45,color: Colors.black45),),
-                          SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
 
                           Container(
                             height: 100,
                             width: 100,
                             child: setIconForMain(cityDataModel)
                           ),
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Text(cityDataModel.description.toString(),style: GoogleFonts.ubuntu(fontSize: 21,color: Colors.black45),),
-                          SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
                           Text(
                             cityDataModel.temp.round().toString() + '\u00B0',
                             style: GoogleFonts.ubuntu(fontSize: 80),
@@ -170,16 +169,16 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(width: 2,),
+                              const SizedBox(width: 2,),
                               Container(
                                 height: 100,
                                 width: 80,
                                 child: Column(
                                   children: [
                                     Text('WindSpeed',style: GoogleFonts.ubuntu(fontSize: 15,color: Colors.black45),),
-                                    SizedBox(height: 5,),
-                                    Container(width: 30,height: 30,child: Image(image: AssetImage('lib/images/wind.png'))),
-                                    SizedBox(height: 5,),
+                                    const SizedBox(height: 5,),
+                                    Container(width: 30,height: 30,child: const Image(image: AssetImage('lib/images/wind.png'))),
+                                    const SizedBox(height: 5,),
                                     Text(cityDataModel.windspeed.round().toString(),style: GoogleFonts.ubuntu(fontSize: 19),)
                                   ],
                                 ),
@@ -198,9 +197,9 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                                 child: Column(
                                   children: [
                                     Text('Humidity',style: GoogleFonts.ubuntu(fontSize: 15,color: Colors.black45),),
-                                    SizedBox(height: 5,),
-                                    Container(width: 30,height: 30,child: Image(image: AssetImage('lib/images/humidity.png'))),
-                                    SizedBox(height: 5,),
+                                    const SizedBox(height: 5,),
+                                    Container(width: 30,height: 30,child: const Image(image: AssetImage('lib/images/humidity.png'))),
+                                    const SizedBox(height: 5,),
                                     Text(cityDataModel.humidity.round().toString(),style: GoogleFonts.ubuntu(fontSize: 19),)
                                   ],
                                 ),
@@ -219,9 +218,9 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                                 child: Column(
                                   children: [
                                     Text('Sunrise',style: GoogleFonts.ubuntu(fontSize: 15,color: Colors.black45),),
-                                    SizedBox(height: 5,),
-                                    Container(width: 30,height: 30,child: Image(image: AssetImage('lib/images/sunrise.png'))),
-                                    SizedBox(height: 5,),
+                                    const SizedBox(height: 5,),
+                                    Container(width: 30,height: 30,child: const Image(image: AssetImage('lib/images/sunrise.png'))),
+                                    const SizedBox(height: 5,),
                                     Text(sunrise,style: GoogleFonts.ubuntu(fontSize: 19),)
                                   ],
                                 ),
@@ -241,9 +240,9 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                                 child: Column(
                                   children: [
                                     Text('Sunset',style: GoogleFonts.ubuntu(fontSize: 15,color: Colors.black45),),
-                                    SizedBox(height: 5,),
-                                    Container(width: 30,height: 30,child: Image(image: AssetImage('lib/images/sunSet.png'))),
-                                    SizedBox(height: 5,),
+                                    const SizedBox(height: 5,),
+                                    Container(width: 30,height: 30,child: const Image(image: AssetImage('lib/images/sunSet.png'))),
+                                    const SizedBox(height: 5,),
                                     Text(sunset,style: GoogleFonts.ubuntu(fontSize: 19),)
                                   ],
                                 ),
@@ -259,7 +258,7 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
                   ),
                 ),
               );
-            }else{return Center(child: Container( child: Text('loading...'),),);}
+            }else{return Center(child: Container( child: const Text('loading...'),),);}
           },
 
         )
@@ -268,24 +267,24 @@ late Future<currentCityDataModel> CurrentWeatherFuture;
   Image setIconForMain(model) {
     String description = model.description;
     if (description == 'clear sky') {
-      return Image(
+      return const Image(
         image: AssetImage('lib/images/suny.png'),
       );
     } else if (description == 'few clouds') {
-      return Image(
+      return const Image(
         image: AssetImage('lib/images/sun-clud.png'),
       );
     } else if (description.contains('rain')) {
-      return Image(image: AssetImage('lib/images/rain.png'));
+      return const Image(image: AssetImage('lib/images/rain.png'));
     }else if (description.contains('thuntherstorm')) {
-      return Image(image: AssetImage('lib/images/cloud-rain.png'));
+      return const Image(image: AssetImage('lib/images/cloud-rain.png'));
     }else if (description.contains('drizzle')) {
-      return Image(image: AssetImage('lib/images/cloud-rain.png'));
+      return const Image(image: AssetImage('lib/images/cloud-rain.png'));
     }else if (description.contains('snow')) {
-      return Image(image: AssetImage('lib/images/snow.png'));
+      return const Image(image: AssetImage('lib/images/snow.png'));
     }else if (description.contains('clouds')) {
-      return Image(image: AssetImage('lib/images/cloud.png'));
-    }else{return Image(image: AssetImage('lib/images/haze.png'));}
+      return const Image(image: AssetImage('lib/images/cloud.png'));
+    }else{return const Image(image: AssetImage('lib/images/haze.png'));}
   }
   Future<currentCityDataModel> sendRequestCurrentWeather(String cityName) async{
     var apiKey = 'bfd6c9b65a5ba4ec3e260b6dccec5dea';
